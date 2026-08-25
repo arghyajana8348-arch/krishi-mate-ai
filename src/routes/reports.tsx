@@ -13,7 +13,7 @@ export const Route = createFileRoute("/reports")({
       { property: "og:description", content: "Daily and weekly farm reports, exportable as PDF." },
     ],
   }),
-  component: Reports;
+  component: Reports,
 });
 
 const daily = [
