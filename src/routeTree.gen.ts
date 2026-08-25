@@ -10,10 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AnalyzingRouteImport } from './routes/analyzing'
+import { Route as DeviceRouteImport } from './routes/device'
+import { Route as EmergencyRouteImport } from './routes/emergency'
+import { Route as FarmRouteImport } from './routes/farm'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as HistoryRouteImport } from './routes/history'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as RecommendationsRouteImport } from './routes/recommendations'
+import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as ResultRouteImport } from './routes/result'
 import { Route as ScanRouteImport } from './routes/scan'
+import { Route as SensorsRouteImport } from './routes/sensors'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SplashRouteImport } from './routes/splash'
 
 const IndexRoute = IndexRouteImport.update({
@@ -21,14 +35,74 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AnalyzingRoute = AnalyzingRouteImport.update({
   id: '/analyzing',
   path: '/analyzing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DeviceRoute = DeviceRouteImport.update({
+  id: '/device',
+  path: '/device',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmergencyRoute = EmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FarmRoute = FarmRouteImport.update({
+  id: '/farm',
+  path: '/farm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecommendationsRoute = RecommendationsRouteImport.update({
+  id: '/recommendations',
+  path: '/recommendations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResultRoute = ResultRouteImport.update({
@@ -41,6 +115,16 @@ const ScanRoute = ScanRouteImport.update({
   path: '/scan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SensorsRoute = SensorsRouteImport.update({
+  id: '/sensors',
+  path: '/sensors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SplashRoute = SplashRouteImport.update({
   id: '/splash',
   path: '/splash',
@@ -49,44 +133,160 @@ const SplashRoute = SplashRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
   '/analyzing': typeof AnalyzingRoute
+  '/device': typeof DeviceRoute
+  '/emergency': typeof EmergencyRoute
+  '/farm': typeof FarmRoute
+  '/help': typeof HelpRoute
+  '/history': typeof HistoryRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/recommendations': typeof RecommendationsRoute
+  '/reports': typeof ReportsRoute
   '/result': typeof ResultRoute
   '/scan': typeof ScanRoute
+  '/sensors': typeof SensorsRoute
+  '/settings': typeof SettingsRoute
   '/splash': typeof SplashRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
   '/analyzing': typeof AnalyzingRoute
+  '/device': typeof DeviceRoute
+  '/emergency': typeof EmergencyRoute
+  '/farm': typeof FarmRoute
+  '/help': typeof HelpRoute
+  '/history': typeof HistoryRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/recommendations': typeof RecommendationsRoute
+  '/reports': typeof ReportsRoute
   '/result': typeof ResultRoute
   '/scan': typeof ScanRoute
+  '/sensors': typeof SensorsRoute
+  '/settings': typeof SettingsRoute
   '/splash': typeof SplashRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
   '/analyzing': typeof AnalyzingRoute
+  '/device': typeof DeviceRoute
+  '/emergency': typeof EmergencyRoute
+  '/farm': typeof FarmRoute
+  '/help': typeof HelpRoute
+  '/history': typeof HistoryRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/recommendations': typeof RecommendationsRoute
+  '/reports': typeof ReportsRoute
   '/result': typeof ResultRoute
   '/scan': typeof ScanRoute
+  '/sensors': typeof SensorsRoute
+  '/settings': typeof SettingsRoute
   '/splash': typeof SplashRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/analyzing' | '/login' | '/result' | '/scan' | '/splash'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/alerts'
+    | '/analytics'
+    | '/analyzing'
+    | '/device'
+    | '/emergency'
+    | '/farm'
+    | '/help'
+    | '/history'
+    | '/login'
+    | '/notifications'
+    | '/profile'
+    | '/recommendations'
+    | '/reports'
+    | '/result'
+    | '/scan'
+    | '/sensors'
+    | '/settings'
+    | '/splash'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/analyzing' | '/login' | '/result' | '/scan' | '/splash'
+  to:
+    | '/'
+    | '/about'
+    | '/alerts'
+    | '/analytics'
+    | '/analyzing'
+    | '/device'
+    | '/emergency'
+    | '/farm'
+    | '/help'
+    | '/history'
+    | '/login'
+    | '/notifications'
+    | '/profile'
+    | '/recommendations'
+    | '/reports'
+    | '/result'
+    | '/scan'
+    | '/sensors'
+    | '/settings'
+    | '/splash'
   id:
-    '__root__' | '/' | '/analyzing' | '/login' | '/result' | '/scan' | '/splash'
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/alerts'
+    | '/analytics'
+    | '/analyzing'
+    | '/device'
+    | '/emergency'
+    | '/farm'
+    | '/help'
+    | '/history'
+    | '/login'
+    | '/notifications'
+    | '/profile'
+    | '/recommendations'
+    | '/reports'
+    | '/result'
+    | '/scan'
+    | '/sensors'
+    | '/settings'
+    | '/splash'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AlertsRoute: typeof AlertsRoute
+  AnalyticsRoute: typeof AnalyticsRoute
   AnalyzingRoute: typeof AnalyzingRoute
+  DeviceRoute: typeof DeviceRoute
+  EmergencyRoute: typeof EmergencyRoute
+  FarmRoute: typeof FarmRoute
+  HelpRoute: typeof HelpRoute
+  HistoryRoute: typeof HistoryRoute
   LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ProfileRoute: typeof ProfileRoute
+  RecommendationsRoute: typeof RecommendationsRoute
+  ReportsRoute: typeof ReportsRoute
   ResultRoute: typeof ResultRoute
   ScanRoute: typeof ScanRoute
+  SensorsRoute: typeof SensorsRoute
+  SettingsRoute: typeof SettingsRoute
   SplashRoute: typeof SplashRoute
 }
 
@@ -99,6 +299,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/analyzing': {
       id: '/analyzing'
       path: '/analyzing'
@@ -106,11 +327,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnalyzingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/device': {
+      id: '/device'
+      path: '/device'
+      fullPath: '/device'
+      preLoaderRoute: typeof DeviceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emergency': {
+      id: '/emergency'
+      path: '/emergency'
+      fullPath: '/emergency'
+      preLoaderRoute: typeof EmergencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/farm': {
+      id: '/farm'
+      path: '/farm'
+      fullPath: '/farm'
+      preLoaderRoute: typeof FarmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recommendations': {
+      id: '/recommendations'
+      path: '/recommendations'
+      fullPath: '/recommendations'
+      preLoaderRoute: typeof RecommendationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/result': {
@@ -127,6 +411,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScanRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sensors': {
+      id: '/sensors'
+      path: '/sensors'
+      fullPath: '/sensors'
+      preLoaderRoute: typeof SensorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/splash': {
       id: '/splash'
       path: '/splash'
@@ -139,10 +437,24 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AlertsRoute: AlertsRoute,
+  AnalyticsRoute: AnalyticsRoute,
   AnalyzingRoute: AnalyzingRoute,
+  DeviceRoute: DeviceRoute,
+  EmergencyRoute: EmergencyRoute,
+  FarmRoute: FarmRoute,
+  HelpRoute: HelpRoute,
+  HistoryRoute: HistoryRoute,
   LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
+  ProfileRoute: ProfileRoute,
+  RecommendationsRoute: RecommendationsRoute,
+  ReportsRoute: ReportsRoute,
   ResultRoute: ResultRoute,
   ScanRoute: ScanRoute,
+  SensorsRoute: SensorsRoute,
+  SettingsRoute: SettingsRoute,
   SplashRoute: SplashRoute,
 }
 export const routeTree = rootRouteImport

@@ -31,6 +31,7 @@ function Analyzing() {
       const t = setTimeout(() => navigate({ to: "/result" }), 500);
       return () => clearTimeout(t);
     }
+    return undefined;
   }, [progress, navigate]);
 
   const activeStep = Math.min(steps.length - 1, Math.floor(progress / 26));
