@@ -10,10 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AnalyzingRouteImport } from './routes/analyzing'
+import { Route as HistoryRouteImport } from './routes/history'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as RecommendationsRouteImport } from './routes/recommendations'
+import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as ResultRouteImport } from './routes/result'
 import { Route as ScanRouteImport } from './routes/scan'
+import { Route as SensorsRouteImport } from './routes/sensors'
 import { Route as SplashRouteImport } from './routes/splash'
 
 const IndexRoute = IndexRouteImport.update({
@@ -21,14 +27,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AnalyzingRoute = AnalyzingRouteImport.update({
   id: '/analyzing',
   path: '/analyzing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecommendationsRoute = RecommendationsRouteImport.update({
+  id: '/recommendations',
+  path: '/recommendations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResultRoute = ResultRouteImport.update({
@@ -41,6 +72,11 @@ const ScanRoute = ScanRouteImport.update({
   path: '/scan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SensorsRoute = SensorsRouteImport.update({
+  id: '/sensors',
+  path: '/sensors',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SplashRoute = SplashRouteImport.update({
   id: '/splash',
   path: '/splash',
@@ -49,44 +85,104 @@ const SplashRoute = SplashRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
   '/analyzing': typeof AnalyzingRoute
+  '/history': typeof HistoryRoute
   '/login': typeof LoginRoute
+  '/recommendations': typeof RecommendationsRoute
+  '/reports': typeof ReportsRoute
   '/result': typeof ResultRoute
   '/scan': typeof ScanRoute
+  '/sensors': typeof SensorsRoute
   '/splash': typeof SplashRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
   '/analyzing': typeof AnalyzingRoute
+  '/history': typeof HistoryRoute
   '/login': typeof LoginRoute
+  '/recommendations': typeof RecommendationsRoute
+  '/reports': typeof ReportsRoute
   '/result': typeof ResultRoute
   '/scan': typeof ScanRoute
+  '/sensors': typeof SensorsRoute
   '/splash': typeof SplashRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
   '/analyzing': typeof AnalyzingRoute
+  '/history': typeof HistoryRoute
   '/login': typeof LoginRoute
+  '/recommendations': typeof RecommendationsRoute
+  '/reports': typeof ReportsRoute
   '/result': typeof ResultRoute
   '/scan': typeof ScanRoute
+  '/sensors': typeof SensorsRoute
   '/splash': typeof SplashRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/analyzing' | '/login' | '/result' | '/scan' | '/splash'
+  fullPaths:
+    | '/'
+    | '/alerts'
+    | '/analytics'
+    | '/analyzing'
+    | '/history'
+    | '/login'
+    | '/recommendations'
+    | '/reports'
+    | '/result'
+    | '/scan'
+    | '/sensors'
+    | '/splash'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/analyzing' | '/login' | '/result' | '/scan' | '/splash'
+  to:
+    | '/'
+    | '/alerts'
+    | '/analytics'
+    | '/analyzing'
+    | '/history'
+    | '/login'
+    | '/recommendations'
+    | '/reports'
+    | '/result'
+    | '/scan'
+    | '/sensors'
+    | '/splash'
   id:
-    '__root__' | '/' | '/analyzing' | '/login' | '/result' | '/scan' | '/splash'
+    | '__root__'
+    | '/'
+    | '/alerts'
+    | '/analytics'
+    | '/analyzing'
+    | '/history'
+    | '/login'
+    | '/recommendations'
+    | '/reports'
+    | '/result'
+    | '/scan'
+    | '/sensors'
+    | '/splash'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlertsRoute: typeof AlertsRoute
+  AnalyticsRoute: typeof AnalyticsRoute
   AnalyzingRoute: typeof AnalyzingRoute
+  HistoryRoute: typeof HistoryRoute
   LoginRoute: typeof LoginRoute
+  RecommendationsRoute: typeof RecommendationsRoute
+  ReportsRoute: typeof ReportsRoute
   ResultRoute: typeof ResultRoute
   ScanRoute: typeof ScanRoute
+  SensorsRoute: typeof SensorsRoute
   SplashRoute: typeof SplashRoute
 }
 
@@ -99,6 +195,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/analyzing': {
       id: '/analyzing'
       path: '/analyzing'
@@ -106,11 +216,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnalyzingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recommendations': {
+      id: '/recommendations'
+      path: '/recommendations'
+      fullPath: '/recommendations'
+      preLoaderRoute: typeof RecommendationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/result': {
@@ -127,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScanRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sensors': {
+      id: '/sensors'
+      path: '/sensors'
+      fullPath: '/sensors'
+      preLoaderRoute: typeof SensorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/splash': {
       id: '/splash'
       path: '/splash'
@@ -139,10 +277,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlertsRoute: AlertsRoute,
+  AnalyticsRoute: AnalyticsRoute,
   AnalyzingRoute: AnalyzingRoute,
+  HistoryRoute: HistoryRoute,
   LoginRoute: LoginRoute,
+  RecommendationsRoute: RecommendationsRoute,
+  ReportsRoute: ReportsRoute,
   ResultRoute: ResultRoute,
   ScanRoute: ScanRoute,
+  SensorsRoute: SensorsRoute,
   SplashRoute: SplashRoute,
 }
 export const routeTree = rootRouteImport
