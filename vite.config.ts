@@ -21,7 +21,7 @@ export default defineConfig({
         injectRegister: null,
         filename: "sw.js",
         devOptions: { enabled: false },
-        includeAssets: ["favicon.ico", "app-icon-192.png", "app-icon-512.png"],
+        includeAssets: ["favicon.png", "app-icon-192.png", "app-icon-512.png"],
         manifest: {
           name: "KrishiMitra AI — Smart Farming Assistant",
           short_name: "KrishiMitra",
