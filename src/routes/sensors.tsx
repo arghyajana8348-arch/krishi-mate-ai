@@ -59,7 +59,7 @@ function Sensors() {
 
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={trend} margin={{ left: -20, right: 4, top: 8 }}>
+              <LineChart data={readings} margin={{ left: -20, right: 4, top: 8 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" vertical={false} />
                 <XAxis dataKey="t" tickLine={false} axisLine={false} fontSize={12} />
                 <YAxis tickLine={false} axisLine={false} fontSize={12} />
