@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AnalyzingRouteImport } from './routes/analyzing'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as DeviceRouteImport } from './routes/device'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as FarmRouteImport } from './routes/farm'
@@ -53,6 +54,11 @@ const AnalyticsRoute = AnalyticsRouteImport.update({
 const AnalyzingRoute = AnalyzingRouteImport.update({
   id: '/analyzing',
   path: '/analyzing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DeviceRoute = DeviceRouteImport.update({
@@ -137,6 +143,7 @@ export interface FileRoutesByFullPath {
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
   '/analyzing': typeof AnalyzingRoute
+  '/auth': typeof AuthRoute
   '/device': typeof DeviceRoute
   '/emergency': typeof EmergencyRoute
   '/farm': typeof FarmRoute
@@ -159,6 +166,7 @@ export interface FileRoutesByTo {
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
   '/analyzing': typeof AnalyzingRoute
+  '/auth': typeof AuthRoute
   '/device': typeof DeviceRoute
   '/emergency': typeof EmergencyRoute
   '/farm': typeof FarmRoute
@@ -182,6 +190,7 @@ export interface FileRoutesById {
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
   '/analyzing': typeof AnalyzingRoute
+  '/auth': typeof AuthRoute
   '/device': typeof DeviceRoute
   '/emergency': typeof EmergencyRoute
   '/farm': typeof FarmRoute
@@ -206,6 +215,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/analytics'
     | '/analyzing'
+    | '/auth'
     | '/device'
     | '/emergency'
     | '/farm'
@@ -228,6 +238,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/analytics'
     | '/analyzing'
+    | '/auth'
     | '/device'
     | '/emergency'
     | '/farm'
@@ -250,6 +261,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/analytics'
     | '/analyzing'
+    | '/auth'
     | '/device'
     | '/emergency'
     | '/farm'
@@ -273,6 +285,7 @@ export interface RootRouteChildren {
   AlertsRoute: typeof AlertsRoute
   AnalyticsRoute: typeof AnalyticsRoute
   AnalyzingRoute: typeof AnalyzingRoute
+  AuthRoute: typeof AuthRoute
   DeviceRoute: typeof DeviceRoute
   EmergencyRoute: typeof EmergencyRoute
   FarmRoute: typeof FarmRoute
@@ -325,6 +338,13 @@ declare module '@tanstack/react-router' {
       path: '/analyzing'
       fullPath: '/analyzing'
       preLoaderRoute: typeof AnalyzingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/device': {
@@ -441,6 +461,7 @@ const rootRouteChildren: RootRouteChildren = {
   AlertsRoute: AlertsRoute,
   AnalyticsRoute: AnalyticsRoute,
   AnalyzingRoute: AnalyzingRoute,
+  AuthRoute: AuthRoute,
   DeviceRoute: DeviceRoute,
   EmergencyRoute: EmergencyRoute,
   FarmRoute: FarmRoute,
