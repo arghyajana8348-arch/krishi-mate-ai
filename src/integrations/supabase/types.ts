@@ -14,7 +14,131 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      devices: {
+        Row: {
+          created_at: string
+          device_code: string
+          farm_id: string | null
+          firmware: string
+          id: string
+          last_sync: string | null
+          nickname: string | null
+          status: string
+          updated_at: string
+          user_id: string
+          wifi_ssid: string | null
+        }
+        Insert: {
+          created_at?: string
+          device_code: string
+          farm_id?: string | null
+          firmware?: string
+          id?: string
+          last_sync?: string | null
+          nickname?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+          wifi_ssid?: string | null
+        }
+        Update: {
+          created_at?: string
+          device_code?: string
+          farm_id?: string | null
+          firmware?: string
+          id?: string
+          last_sync?: string | null
+          nickname?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+          wifi_ssid?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "devices_farm_id_fkey"
+            columns: ["farm_id"]
+            isOneToOne: false
+            referencedRelation: "farms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      farms: {
+        Row: {
+          created_at: string
+          crops: string[]
+          id: string
+          irrigation: string | null
+          location: string | null
+          name: string
+          size_acres: number
+          soil_type: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          crops?: string[]
+          id?: string
+          irrigation?: string | null
+          location?: string | null
+          name: string
+          size_acres?: number
+          soil_type?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          crops?: string[]
+          id?: string
+          irrigation?: string | null
+          location?: string | null
+          name?: string
+          size_acres?: number
+          soil_type?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          district: string | null
+          full_name: string
+          id: string
+          language: string
+          onboarded: boolean
+          phone: string | null
+          updated_at: string
+          village: string | null
+        }
+        Insert: {
+          created_at?: string
+          district?: string | null
+          full_name?: string
+          id: string
+          language?: string
+          onboarded?: boolean
+          phone?: string | null
+          updated_at?: string
+          village?: string | null
+        }
+        Update: {
+          created_at?: string
+          district?: string | null
+          full_name?: string
+          id?: string
+          language?: string
+          onboarded?: boolean
+          phone?: string | null
+          updated_at?: string
+          village?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
