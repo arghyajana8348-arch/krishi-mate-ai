@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BatteryCharging, CloudRain, Droplets, Gauge, Thermometer, Wifi } from "lucide-react";
+import { BatteryCharging, CloudRain, Droplets, Gauge, RefreshCw, Thermometer, Wifi } from "lucide-react";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import { AppShell } from "@/components/app-shell";
 import { Pill, SectionTitle, StatTile } from "@/components/kit";
-import { trend } from "@/lib/farm-data";
+import { useSensorHistory } from "@/lib/sensor-history";
 
 export const Route = createFileRoute("/sensors")({
   head: () => ({
@@ -19,22 +19,44 @@ export const Route = createFileRoute("/sensors")({
 });
 
 function Sensors() {
+  const { readings, status, lastSyncedAt } = useSensorHistory();
+  const latest = readings[readings.length - 1];
+
+  const syncLabel =
+    status === "syncing"
+      ? "Syncing new readings…"
+      : status === "offline"
+        ? "Offline — buffering on device"
+        : status === "error"
+          ? "Sync retry pending"
+          : lastSyncedAt
+            ? `Synced ${lastSyncedAt.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`
+            : "Device Connected";
+
   return (
     <AppShell
       title="Live Sensor Dashboard"
-      subtitle="ESP32 node · Block A101 · updated 12 seconds ago"
-      actions={<Pill tone="primary">Device Connected</Pill>}
+      subtitle="ESP32 node · Block A101 · merges buffered readings on reconnect"
+      actions={
+        <Pill tone={status === "offline" || status === "error" ? "warning" : "primary"}>
+          <span className="flex items-center gap-1.5">
+            <RefreshCw className={`size-3.5 ${status === "syncing" ? "animate-spin" : ""}`} />
+            {syncLabel}
+          </span>
+        </Pill>
+      }
     >
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <StatTile icon={<Droplets className="size-4.5" />} label="Soil Moisture" value="42" unit="%" hint="Below optimal (55%)" tone="warning" />
-        <StatTile icon={<Thermometer className="size-4.5" />} label="Temperature" value="31" unit="°C" hint="Within safe range" tone="primary" />
-        <StatTile icon={<Gauge className="size-4.5" />} label="Humidity" value="68" unit="%" hint="Blight risk window" tone="info" />
+        <StatTile icon={<Droplets className="size-4.5" />} label="Soil Moisture" value={String(latest?.moisture ?? 42)} unit="%" hint="Below optimal (55%)" tone="warning" />
+        <StatTile icon={<Thermometer className="size-4.5" />} label="Temperature" value={String(latest?.temp ?? 31)} unit="°C" hint="Within safe range" tone="primary" />
+        <StatTile icon={<Gauge className="size-4.5" />} label="Humidity" value={String(latest?.humidity ?? 68)} unit="%" hint="Blight risk window" tone="info" />
         <StatTile icon={<CloudRain className="size-4.5" />} label="Rainfall" value="No" unit="Rain" hint="0 mm past 24h" tone="primary" />
       </div>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-3">
         <section className="surface p-5 lg:col-span-2">
           <SectionTitle title="24-hour sensor stream" />
+
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={trend} margin={{ left: -20, right: 4, top: 8 }}>
